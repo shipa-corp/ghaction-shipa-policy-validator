@@ -1,0 +1,27 @@
+name: "Shipa policy engine validator"
+description: "Run framework policy validation on given helm chart"
+runs:
+  using: "docker"
+  image: "docker://shipasoftware/ghaction-shipa-policy-validator:latest"
+inputs:
+  host:
+    description: "shipa host api - if given policy validation is uploaded there and this api is used to fetch framework config if required"
+    required: false
+  port:
+    description: "shipa api port - defaults to 443 for https, 80 for http host"
+    required: false
+  token:
+    description: "shipa api token - token to authenticate to shipa api"
+    required: false
+  caCert:
+    description: "shipa api ca certificate - certificate to use for making https calls"
+    required: false
+  framework:
+    description: "framework name - if given framework config is fetched from shipa api and policy validation is ran based on it"
+    required: false
+  framework-path:
+    description: "framework path - if given framework is loaded from path and and policy validation is ran based on it"
+    required: false
+  chart-location:
+    description: "chart-location - local chart location"
+    required: true
